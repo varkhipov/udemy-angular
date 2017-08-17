@@ -1,3 +1,24 @@
-<app-server></app-server>
-<app-server></app-server>
+<label>Server name</label>
 
+<!-- one-way-databinding -->
+<!--<input type="text"-->
+       <!--class="form-control"-->
+       <!--(input)="onUpdateServerName($event)">-->
+
+<!-- two-way-databinding -->
+<!-- needs import of FormsModule in app.module -->
+<input type="text"
+       class="form-control"
+       [(ngModel)]="serverName">
+
+<p>{{ serverName }}</p>
+
+<div class="servers">
+  <app-server class="top-indent"></app-server>
+</div>
+
+<p>{{ serverCreationStatus }}</p>
+
+<button class="btn btn-primary"
+        [disabled]="!allowNewServer"
+        (click)="onCreateServer()">Add Server</button>
