@@ -1,2 +1,7 @@
-<p>{{ 'Server' }} ID is: {{ serverId }}</p>
-<p>Server status is: {{ getServerStatus() }}</p>
+<div class="top-indent"
+     [ngStyle]="{backgroundColor: getColor()}"
+     [ngClass]="{bold: serverStatus === 'online'}"
+     (click)="refreshServerStatus()">
+  <p>{{ 'Server' }} ID is: {{ serverId }}</p>
+  <p>Server status is: {{ getServerStatus() }}</p>
+</div>

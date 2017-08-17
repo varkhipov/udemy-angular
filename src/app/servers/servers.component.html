@@ -2,8 +2,8 @@
 
 <!-- one-way-databinding -->
 <!--<input type="text"-->
-       <!--class="form-control"-->
-       <!--(input)="onUpdateServerName($event)">-->
+<!--class="form-control"-->
+<!--(input)="onUpdateServerName($event)">-->
 
 <!-- two-way-databinding -->
 <!-- needs import of FormsModule in app.module -->
@@ -11,14 +11,18 @@
        class="form-control"
        [(ngModel)]="serverName">
 
-<p>{{ serverName }}</p>
+<!--<p>{{ serverName }}</p>-->
 
-<div class="servers">
-  <app-server class="top-indent"></app-server>
+<div class="servers container">
+  <app-server *ngFor="let server of servers"></app-server>
 </div>
 
-<p>{{ serverCreationStatus }}</p>
+<p *ngIf="serverCreated; else noServer">{{ serverCreationStatus }}</p>
+<ng-template #noServer>
+  <p>No server created.</p>
+</ng-template>
 
 <button class="btn btn-primary"
         [disabled]="!allowNewServer"
-        (click)="onCreateServer()">Add Server</button>
+        (click)="onCreateServer()">Add Server
+</button>
